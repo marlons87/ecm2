@@ -3,7 +3,7 @@ return [
     'components' => [
         'db' => [
             'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=localhost;dbname=modsegecm2',
+            'dsn' => 'mysql:host=localhost;dbname=modsegecm2_fd',
             'username' => 'root',
             'password' => '',
             'charset' => 'utf8',

@@ -30,6 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'Apellido1',
             'Apellido2',
             'Puesto',
+            
             //'auth_key',
             //'password_hash',
             //'password_reset_token',
@@ -54,6 +55,17 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                                      ['class'=>'form-control','prompt' => 'Seleccione un estado']),
                 
             ],
+                         [
+                'attribute' => 'firma',
+                'value' => function($model) {
+                    return $model->firma == 0 ? 'Usuario/Contraseña' : 'Firma Digital';
+                },
+                'filter' => Html::activeDropDownList($searchModel, 'firma', ['0' => 'Usuario/Contraseña',
+                                                                             '1' => 'Firma Digital'], 
+                                                                                     ['class'=>'form-control','prompt' => 'Seleccione el mecanismo de inicio de sesión']),
+                
+            ],
+                        
             /*
             ['class' => 'yii\grid\ActionColumn',//'header'=>'Acciones'],
             'template' => '{view} {update} {delete} {activate}',

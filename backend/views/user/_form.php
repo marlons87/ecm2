@@ -30,7 +30,9 @@ use yii\helpers\Url;
 
     <?= $form->field($model, 'Id_Institucion')->dropDownList($model->InstitucionList , ['prompt' => 'Seleccione...']) ?>
     
-    <?= $form->field($model, 'status')->dropDownList(['0' => 'Inactivo']); ?>
+    <?= $form->field($model, 'status')->dropDownList(['0' => 'Inactivo','1' => 'Activo']); ?>
+    
+     <?= $form->field($model, 'firma')->dropDownList(['0' => 'Usuario / Contraseña','1'=>'Firma Digital']); ?>
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
