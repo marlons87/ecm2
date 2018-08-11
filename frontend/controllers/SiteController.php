@@ -175,7 +175,23 @@ class SiteController extends Controller
     public function actionRequestPasswordReset()
     {
         $model = new PasswordResetRequestForm();
+        
+        $model->load(Yii::$app->request->post());
+        
+           $firma = Yii::$app->db->createCommand('SELECT firma FROM `user` WHERE email=:correo')
+                    ->bindValue(':correo', $model->email)
+                    ->queryOne();
+           
+           
+               if ($firma['firma']==="1"){
+                   echo "entra";
+                     Yii::$app->session->setFlash('error', 'No se puede restablecer la contraseña, debido a que el usuario usa como método de autenticación Firma Digital.');
+                      return $this->refresh();
+               }
+           
+        
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+             
             if ($model->sendEmail()) {
                 Yii::$app->session->setFlash('success', 'Por favor verifique su correo electrónico para más instrucciones');
 
@@ -185,7 +201,7 @@ class SiteController extends Controller
             }
         }
 
-        return $this->render('requestPasswordResetToken', [
+       return $this->render('requestPasswordResetToken', [
             'model' => $model,
         ]);
     }
