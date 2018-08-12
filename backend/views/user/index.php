@@ -60,8 +60,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => function($model) {
                     return $model->firma == 0 ? 'Usuario/Contraseña' : 'Firma Digital';
                 },
-                'filter' => Html::activeDropDownList($searchModel, 'firma', ['0' => 'Usuario/Contraseña',
-                                                                             '1' => 'Firma Digital'], 
+                'filter' => Html::activeDropDownList($searchModel, 'firma', [0 => 'Usuario/Contraseña',
+                                                                             1=> 'Firma Digital'], 
                                                                                      ['class'=>'form-control','prompt' => 'Seleccione el mecanismo de inicio de sesión']),
                 
             ],
