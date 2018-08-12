@@ -184,7 +184,7 @@ class SiteController extends Controller
            
            
                if ($firma['firma']==="1"){
-                   echo "entra";
+                  
                      Yii::$app->session->setFlash('error', 'No se puede restablecer la contraseña, debido a que el usuario usa como método de autenticación Firma Digital.');
                       return $this->refresh();
                }

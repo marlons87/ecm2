@@ -118,8 +118,7 @@ class UserController extends Controller
     public function actionActivate($id)
     {
         $model = $this->findModel($id);
-        //$model->scenario = "update";
-        
+        //$model->scenario = "update";      
         $modelpass = new PasswordResetRequestForm();
         
         if ($model->load(Yii::$app->request->post())) {
@@ -137,7 +136,21 @@ class UserController extends Controller
             if( $model->save(false)){
                 if($model->status == \common\models\User::STATUS_ACTIVE ) {
                     $modelpass->email = $model->email;
-                    $modelpass->sendEmail();
+                    
+                     $firma = Yii::$app->db->createCommand('SELECT firma FROM `user` WHERE email=:correo')
+                    ->bindValue(':correo', $model->email)
+                    ->queryOne();
+                     
+                     if ($firma['firma']==="0"){
+                         
+                         $modelpass->sendEmail(); 
+                     }else{
+                         
+                          $modelpass->enviaCorreoFirma(); 
+                           
+                         
+                     } 
+                     
                 }
                 return $this->redirect(['index']);
                 
