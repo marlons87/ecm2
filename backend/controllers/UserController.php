@@ -72,8 +72,13 @@ class UserController extends Controller
         $model->scenario = "create";
         
         if ($model->load(Yii::$app->request->post())){
-            $model->setPassword('123456');
-            $model->generateAuthKey();
+            if($model->firma)
+              {
+                $model->setPassword($model->username);
+            }else{
+                $model->setPassword('123456');
+                $model->generateAuthKey();
+            }
                 if ($model->save()) {
                     $auth = new DbManager;
                     $auth->init();

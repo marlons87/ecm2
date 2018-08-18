@@ -110,7 +110,7 @@ function serviceAjax(jsonObject){
                 result = data; 
             },
             error:function(jqXHR, textStatus, errorThrown){
-                result = {ErrorCode:1, Description:"Error de conexión con el componente de firma digital"};
+                result = {ErrorCode:1, Description:"Error de conexiï¿½n con el componente de firma digital"};
             }
         });
         
