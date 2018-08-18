@@ -31,7 +31,8 @@ use yii\helpers\Url;
     <?= $form->field($model, 'status')->dropDownList([\common\models\User::STATUS_DELETED => 'Inactivo',
                                                       \common\models\User::STATUS_ACTIVE=> 'Activo'], ['disabled' => true]); ?>
     
-     <?= $form->field($model, 'firma')->dropDownList(['0' => 'Usuario / Contraseña','1'=>'Firma Digital']); ?>
+    <?= $form->field($model, 'firma')->dropDownList([common\models\User::LOG_USR_PASS => 'Usuario / Contraseña',
+                                                      common\models\User::LOGIN_FIRMA=>'Firma Digital']); ?>
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>

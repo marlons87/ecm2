@@ -35,7 +35,7 @@ return [
         
         'urlManagerF' => [
         'class' => 'yii\web\urlManager',
-        'baseUrl'=>'http://yii2-starter.dev/',
+        'baseUrl'=>'http://ecm2/',
         'enablePrettyUrl' => true,
         'showScriptName' => false,
 

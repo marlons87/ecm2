@@ -6,6 +6,9 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use frontend\assets\AppAsset;
+
+AppAsset::register($this);
 
 $this->title = 'Iniciar sesión';
 $this->params['breadcrumbs'][] = $this->title;
@@ -16,12 +19,18 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>Por favor ingrese sus credenciales de acceso:</p>
 
     <div class="row">
-        <div class="col-lg-5">
-            <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
+        
+        
+        <div id="divLoading" class="modalLoading">
+            <div>
+                <p>Cargando</p>
+            </div>
+        </div>
+<?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
+        
+        <?= $form->field($model, 'username')->textInput(['autofocus' => true])->label('Usuario') ?>
 
-                <?= $form->field($model, 'username')->textInput(['autofocus' => true])->label('Usuario') ?>
-
-                <?= $form->field($model, 'password')->passwordInput()->label('Contrase&ntilde;a') ?>
+                <?= $form->field($model, 'password')->passwordInput(['autocomplete' => 'off'])->label('Contrase&ntilde;a')  ?>
 
                 <?= $form->field($model, 'rememberMe')->checkbox()->label('Recordarme') ?>
 
@@ -31,11 +40,54 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <div class="form-group">
                     <?= Html::submitButton('Iniciar sesión', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-                    
-                    
+                </div>
+        
+        <div id="overlay" class="modalDialog">
+            <div>
+                <a onclick="overlay();" title="Cerrar" class="close">X</a>
+                <h3>Autenticación</h3>
+
+                <input id="chkTarjeta" type="radio" name="tipoCertificado" value="CARD" onclick="typeCertificate();" checked><label for="chkTarjeta"><img src="img/tarjeta.png" alt="Tarjeta" />Tarjeta</label>
+                <!--<br>-->
+               <!-- <input id="chkArchivo" type="radio" name="tipoCertificado" value="FILE" onclick="typeCertificate();"><label for="chkArchivo"><img src="img/folder.png" alt="Archivo" />Archivo</label>-->
+                <div id="divFiles">
+                    Por favor seleccione el certificado:
+                <div id="divCertFiles">
+                </div>
                 </div>
 
-            <?php ActiveForm::end(); ?>
+                <div id="divSmartCard">
+                    Por favor seleccione el certificado:
+                <div id="divSmartCardCerts">
+                </div>
+                </div>
+
+                <br>
+                <br>
+                <label>Pin:</label>
+                <input id="pin" type="password" onkeypress="Javascript: if (event.which == 13 || event.keyCode == 13) getDN();" />
+                <button class="btn btn-primary" onclick="getDN();">Validar</button>
+                <button class="btn btn-primary" onclick="overlay();">Cerrar</button>
+            </div>
+        </div>
+         <?php ActiveForm::end(); ?>
+        
+        <div class="col-lg-5"> 
+            <div class="form-group">
+            
+                    
+                    <span style="width:300px;height:100px;border:1px solid;" onclick="showModalAutenticacion();">Firma digital</span>
+                    
+                </div>           
+            
+                
+           
         </div>
     </div>
 </div>
+<script>
+    function alerta()
+    {
+        alert("Prueba");
+    }
+    </script>

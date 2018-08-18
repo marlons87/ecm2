@@ -21,7 +21,7 @@ use Yii;
  * @property int $created_at
  * @property int $updated_at
  * @property int $Id_Institucion
- *
+ * @property int $firma
  * @property Evaluaciones[] $evaluaciones
  * @property Instituciones $institucion
  */
@@ -42,7 +42,7 @@ class User extends \yii\db\ActiveRecord
     {
         return [
             [['username', 'Nombre', 'Apellido1', 'Apellido2', 'Puesto', 'auth_key', 'password_hash', 'email', 'created_at', 'updated_at', 'Id_Institucion'], 'required'],
-            [['status', 'created_at', 'updated_at', 'Id_Institucion'], 'integer'],
+            [['status', 'created_at', 'updated_at', 'Id_Institucion', 'firma'], 'integer'],
             [['username', 'password_hash', 'password_reset_token', 'email'], 'string', 'max' => 255],
             [['Nombre'], 'string', 'max' => 50],
             [['Apellido1', 'Apellido2'], 'string', 'max' => 30],
@@ -52,7 +52,8 @@ class User extends \yii\db\ActiveRecord
             [['email'], 'unique'],
             [['password_reset_token'], 'unique'],
             [['Id_Institucion'], 'exist', 'skipOnError' => true, 'targetClass' => Instituciones::className(), 'targetAttribute' => ['Id_Institucion' => 'Id_Institucion']],
-        ];
+            
+            ];
     }
 
     /**
@@ -75,6 +76,7 @@ class User extends \yii\db\ActiveRecord
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'Id_Institucion' => 'Id  Institucion',
+            'firma' => 'Firma'
         ];
     }
 
