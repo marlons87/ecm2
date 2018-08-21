@@ -48,7 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <a onclick="overlay();" title="Cerrar" class="close">X</a>
                 <h3>Autenticación</h3>
 
-                <input id="chkTarjeta" type="radio" name="tipoCertificado" value="CARD" onclick="typeCertificate();" checked><label for="chkTarjeta"><img src="img/tarjeta.png" alt="Tarjeta" />Tarjeta</label>
+                <input id="chkTarjeta" type="radio" name="tipoCertificado" value="CARD" onclick="typeCertificate();" checked><label for="chkTarjeta">Certificado digital</label>
                 <!--<br>-->
                <!-- <input id="chkArchivo" type="radio" name="tipoCertificado" value="FILE" onclick="typeCertificate();"><label for="chkArchivo"><img src="img/folder.png" alt="Archivo" />Archivo</label>-->
                 <div id="divFiles">
