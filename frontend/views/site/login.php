@@ -40,6 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <div class="form-group">
                     <?= Html::submitButton('Iniciar sesión', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                    <button class="btn btn-primary" onclick="showModalAutenticacion();">Firma digital</button>
                 </div>
         
         <div id="overlay" class="modalDialog">
@@ -76,12 +77,9 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="form-group">
             
                     
-                    <span style="width:300px;height:100px;border:1px solid;" onclick="showModalAutenticacion();">Firma digital</span>
-                    
-                </div>           
-            
-                
-           
+<!--                    <span style="width:300px;height:100px;border:1px solid;" onclick="showModalAutenticacion();">Firma digital</span>-->
+                      
+                </div>                     
         </div>
     </div>
 </div>
