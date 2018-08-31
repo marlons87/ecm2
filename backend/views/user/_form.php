@@ -28,8 +28,8 @@ use yii\helpers\Url;
 
     <?= $form->field($model, 'Id_Institucion')->dropDownList($model->InstitucionList , ['prompt' => 'Seleccione...']) ?>
     
-    <?= $form->field($model, 'status')->dropDownList([\common\models\User::STATUS_DELETED => 'Inactivo',
-                                                      \common\models\User::STATUS_ACTIVE=> 'Activo'], ['disabled' => true]); ?>
+     <?= $form->field($model, 'status')->dropDownList([\common\models\User::STATUS_DELETED => 'Inactivo',
+                                                     \common\models\User::STATUS_ACTIVE=> 'Activo'], ['disabled' => true]); ?>
     
     <?= $form->field($model, 'firma')->dropDownList([common\models\User::LOGIN_USR_PASS => 'Usuario / Contraseña',
                                                       common\models\User::LOGIN_FIRMA=>'Firma Digital']); ?>

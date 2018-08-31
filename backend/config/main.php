@@ -92,7 +92,7 @@ return [
         'class' => 'mdm\admin\components\AccessControl',
         'allowActions' => [
             'site/*',
-            'admin/*',
+           // 'admin/*',
       
           
             // The actions listed here will be allowed to everyone including guests.

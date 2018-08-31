@@ -23,7 +23,7 @@ return [
                 'class' => 'Swift_SmtpTransport',
                 'host' => 'smtp.gmail.com',
                 'username' => 'infoecm2@gmail.com',
-                'password' => 'ciberseguridad2018',
+                'password' => 'hepyvyvonmyksrtr',
                 'port' => '587',
                 'encryption' => 'tls',],
                         

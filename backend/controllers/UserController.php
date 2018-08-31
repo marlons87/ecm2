@@ -102,15 +102,25 @@ class UserController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
-        $model->scenario = "update";
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
-        }
-
-        return $this->render('update', [
-            'model' => $model,
-        ]);
+       $modelpass = new PasswordResetRequestForm();
+       $model = $this->findModel($id);
+       $model->scenario = "update";
+       if ($model->load(Yii::$app->request->post())) {
+            $modelpass->email = $model->email;
+            if($model->firma)
+             {
+               $model->setPassword($model->username);
+                $modelpass->enviaCorreoFirma(); 
+           }else{
+               
+                 $modelpass->sendEmail(); 
+           }
+           $model->save();
+           return $this->redirect(['index']);
+       }
+       return $this->render('update', [
+           'model' => $model,
+       ]);
     }
 
         /**
