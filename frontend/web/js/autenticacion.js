@@ -239,6 +239,7 @@ async function getDN(){
             //document.getElementById("loginform-username").value=auth.UserDn.substring(parseInt(inicioUsuario)+3,finUsuario);
             document.getElementById("loginform-username").value=cedula.replace(new RegExp("-","g"), "");
 			document.getElementById("loginform-password").value=cedula.replace(new RegExp("-","g"), "");
+                        document.getElementById("loginform-fd").value=1;
 			document.getElementById("login-form").submit();
 
     }else{

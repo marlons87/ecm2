@@ -101,6 +101,8 @@ GROUP BY i.Id_Institucion, e.Id_Sede, e.Id_Evaluacion, d.Id_Dominio')
 
     public function actionDominios($id) {
         
+        var_dump($id);
+        
         
         
         $sql = ( new \yii\db\Query())->select('*')->from('dominios')->All();
@@ -118,7 +120,7 @@ GROUP BY i.Id_Institucion, e.Id_Sede, e.Id_Evaluacion, d.Id_Dominio')
                 ->bindValue(':id', $id)
                 ->queryOne();
 
-        return $this->render('dominios', array('items' => $sql, 'calificacion' => $calificacion, 'id' => $id, 'evaluacion' => $evaluacion));
+return $this->render('dominios', array('items' => $sql, 'calificacion' => $calificacion, 'id' => $id, 'evaluacion' => $evaluacion));
     }
 
     public function actionInsertar() {

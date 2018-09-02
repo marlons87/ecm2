@@ -30,9 +30,11 @@ $this->params['breadcrumbs'][] = $this->title;
         
         <?= $form->field($model, 'username')->textInput(['autofocus' => true])->label('Usuario') ?>
 
-                <?= $form->field($model, 'password')->passwordInput(['autocomplete' => 'off'])->label('Contrase&ntilde;a')  ?>
+        <?= $form->field($model, 'password')->passwordInput(['autocomplete' => 'off'])->label('Contrase&ntilde;a')  ?>
 
-                <?= $form->field($model, 'rememberMe')->checkbox()->label('Recordarme') ?>
+        <?= $form->field($model, 'fd')->hiddenInput(['value' => 0])->label(false);?>
+     
+        <?= $form->field($model, 'rememberMe')->checkbox()->label('Recordarme') ?>
 
                 <div style="color:#999;margin:1em 0">
                     Si usted olvido su contraseña la puede <?= Html::a('restablecer aquí', ['site/request-password-reset']) ?>.
