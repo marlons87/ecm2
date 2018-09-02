@@ -100,11 +100,7 @@ GROUP BY i.Id_Institucion, e.Id_Sede, e.Id_Evaluacion, d.Id_Dominio')
     }
 
     public function actionDominios($id) {
-        
-        var_dump($id);
-        
-        
-        
+
         $sql = ( new \yii\db\Query())->select('*')->from('dominios')->All();
         $calificacion = Yii::$app->db->createCommand('select dominios.Id_Dominio, dominios.Codigo as DominioCodigo, dominios.Nombre as DominioNombre, controles.Id_Control, controles.Codigo, controles.Nombre, niveles.Valor,respuestas.Observaciones
         from dominios
