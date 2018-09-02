@@ -19,32 +19,34 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>Por favor ingrese sus credenciales de acceso:</p>
 
     <div class="row">
-        
-        
-        <div id="divLoading" class="modalLoading">
+		<div class="col-lg-5">	
+			<?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
+				
+				<?= $form->field($model, 'username')->textInput(['autofocus' => true])->label('Usuario') ?>
+
+						<?= $form->field($model, 'password')->passwordInput(['autocomplete' => 'off'])->label('Contrase&ntilde;a')  ?>
+						
+						<?= $form->field($model, 'fd')->hiddenInput(['value' => 0])->label(false);?>
+
+						<?= $form->field($model, 'rememberMe')->checkbox()->label('Recordarme') ?>
+
+						<div style="color:#999;margin:1em 0">
+							Si usted olvido su contraseña la puede <?= Html::a('restablecer aquí', ['site/request-password-reset']) ?>.
+						</div>
+				
+				
+			<?php ActiveForm::end(); ?>
+			<div class="form-group">
+				<button class="btn btn-primary" onclick="submit();">Iniciar sesión</button>
+            <button class="btn btn-primary" onclick="showModalAutenticacion();">Firma digital</button>
+        </div>
+        </div>
+
+		<div id="divLoading" class="modalLoading">
             <div>
                 <p>Cargando</p>
             </div>
         </div>
-<?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
-        
-        <?= $form->field($model, 'username')->textInput(['autofocus' => true])->label('Usuario') ?>
-
-        <?= $form->field($model, 'password')->passwordInput(['autocomplete' => 'off'])->label('Contrase&ntilde;a')  ?>
-
-        <?= $form->field($model, 'fd')->hiddenInput(['value' => 0])->label(false);?>
-     
-        <?= $form->field($model, 'rememberMe')->checkbox()->label('Recordarme') ?>
-
-                <div style="color:#999;margin:1em 0">
-                    Si usted olvido su contraseña la puede <?= Html::a('restablecer aquí', ['site/request-password-reset']) ?>.
-                </div>
-
-                <div class="form-group">
-                    <?= Html::submitButton('Iniciar sesión', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-                    <button class="btn btn-primary" onclick="showModalAutenticacion();">Firma digital</button>
-                </div>
-        
         <div id="overlay" class="modalDialog">
             <div>
                 <a onclick="overlay();" title="Cerrar" class="close">X</a>
@@ -73,9 +75,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <button class="btn btn-primary" onclick="overlay();">Cerrar</button>
             </div>
         </div>
-         <?php ActiveForm::end(); ?>
-        
-        <div class="col-lg-5"> 
+		<div class="col-lg-5"> 
             <div class="form-group">
             
                     
@@ -86,8 +86,8 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 </div>
 <script>
-    function alerta()
+    function submit()
     {
-        alert("Prueba");
+        document.getElementById("login-form").submit();
     }
     </script>
