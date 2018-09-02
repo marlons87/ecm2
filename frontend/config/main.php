@@ -33,7 +33,7 @@ return [
             'csrfParam' => '_csrf-frontend',
         ],
         
-        'urlManagerF' => [
+        'UrlManagerF' => [
         'class' => 'yii\web\urlManager',
         'baseUrl'=>'http://ecm2/',
         'enablePrettyUrl' => true,

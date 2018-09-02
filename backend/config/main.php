@@ -26,7 +26,7 @@ return [
         ],
         
         // backend
-    'urlManager' => [
+    'UrlManager' => [
         'class' => 'yii\web\urlManager',        
         'enablePrettyUrl' => true,
         'showScriptName' => false,
@@ -37,7 +37,7 @@ return [
     ],
 
     // front-end
-    'urlManagerF' => [
+    'UrlManagerF' => [
         'class' => 'yii\web\urlManager',
         'baseUrl'=>'http://ecm2/',
         'enablePrettyUrl' => true,
