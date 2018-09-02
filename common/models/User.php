@@ -41,7 +41,12 @@ class User extends ActiveRecord implements IdentityInterface
     const LOGIN_FIRMA = 1;
     const LOGIN_USR_PASS = 0;
     
+    const ROLE_ADMIN = 20;
     
+    public function getIsAdmin() { 
+        return $this->role == self::ROLE_ADMIN; 
+        
+    }
     /**
      * @inheritdoc
      */

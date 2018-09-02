@@ -121,7 +121,14 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+            if(Yii::$app->user->can('Administrador'))
+            {
+                return $this->goBack();
+            }else { // if he is not an Admin then what :P  // put him out :P Automatically logout. 
+                Yii::$app->user->logout(); // set error on login page. \
+                Yii::$app->getSession()->setFlash('error', 'El usuario no posee autorización para ingresar a este módulo, favor contacte al Administrador del sitio'); //redirect again page to login form. 
+                return $this->redirect(['site/login']);
+            }
         } else {
             $model->password = '';
 
