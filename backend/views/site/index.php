@@ -26,7 +26,7 @@ $this->title = 'ECM2';
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-4">
-                                <a target="_self" title="Ir a instituciones" href="../admin/instituciones/index"> <img src="https://pbs.twimg.com/media/Dct7-o4VAAEPxbe.png"/></a>
+                                <a target="_self" title="Ir a instituciones" href="../instituciones/index"> <img src="https://pbs.twimg.com/media/Dct7-o4VAAEPxbe.png"/></a>
                             </div>
                             <div class="col-xs-8 text-right">
                                     <?= Html::tag('h2', Html::encode(Instituciones::find()->count())) ?>
@@ -71,7 +71,7 @@ $this->title = 'ECM2';
                         <div class="row">
                             <div class="col-xs-4">
                                
-                                <a target="_self" title="Ir a usuarios" href="../admin/user/index"><img src="https://pbs.twimg.com/media/DcuAWHCX0AAqb75.png"/></a>
+                                <a target="_self" title="Ir a usuarios" href="../user/index"><img src="https://pbs.twimg.com/media/DcuAWHCX0AAqb75.png"/></a>
                                 
                             </div>
                             <div class="col-xs-8 text-right">
@@ -95,7 +95,7 @@ $this->title = 'ECM2';
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-4">
-                                <a target="_self" title="Ir a las evaluaciones" href="../admin/evaluaciones/generales"> <img src="https://pbs.twimg.com/media/DcpnpEZV4AAbfDU.png"/></a>
+                                <a target="_self" title="Ir a las evaluaciones" href="../evaluaciones/generales"> <img src="https://pbs.twimg.com/media/DcpnpEZV4AAbfDU.png"/></a>
                             </div>
                             <div class="col-xs-8 text-right">
                                 <h2>
@@ -145,7 +145,7 @@ $this->title = 'ECM2';
                   
                    
                 </ul>
-                <a  class="btn btn-primary btn-lg btn-block" href="../admin/evaluaciones/instituciones" target="_self">M&aacute;s instituciones</a>
+                <a  class="btn btn-primary btn-lg btn-block" href="../evaluaciones/instituciones" target="_self">M&aacute;s instituciones</a>
 
             </div>
             <div class="col-lg-8">
@@ -209,7 +209,7 @@ $this->title = 'ECM2';
                 <div class="panel panel-default">
   <div class="panel-heading">Dominios</div>
   <div class="panel-body">
-      <h3><a title="Ir a Dominios" target="_self" href="../admin/dominios/index">
+      <h3><a title="Ir a Dominios" target="_self" href="../dominios/index">
                                     <?php
                                     echo intval($dominios['dominios']);
                                     ?>
@@ -223,7 +223,7 @@ $this->title = 'ECM2';
   <div class="panel-heading">Controles</div>
   <div class="panel-body">
     <h3>
-        <a title="Ir a Controles" target="_self" href="../admin/controles/index"><?php
+        <a title="Ir a Controles" target="_self" href="../controles/index"><?php
        
                                     echo intval($control['control']);
                                     ?>
@@ -239,7 +239,7 @@ $this->title = 'ECM2';
   <div class="panel-heading">Niveles</div>
   <div class="panel-body">
       <h3>
-          <a title="Ir a los Niveles" target="_self" href="../admin/niveles/index"> <?php
+          <a title="Ir a los Niveles" target="_self" href="../niveles/index"> <?php
        
                                     echo intval($nivel['nivel']);
                                     ?>
