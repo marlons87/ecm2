@@ -3,6 +3,7 @@ namespace backend\models;
 
 use Yii;
 use yii\base\Model;
+use yii\helpers\Url;
 //use common\models\User;
 
 /**
@@ -60,9 +61,41 @@ class PasswordResetRequestForm extends Model
                 ['html' => 'passwordResetToken-html', 'text' => 'passwordResetToken-text'],
                 ['user' => $user]
             )
-            ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' robot'])
+            ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' Administrador'])
             ->setTo($this->email)
             ->setSubject('Restablecer la contraseña para  ' . Yii::$app->name)
+            ->send();
+    }
+    
+    
+    public function sendEmailUpdate()
+    {
+        /* @var $user User */
+        $user = User::findOne([
+            'status' => User::STATUS_ACTIVE,
+            'email' => $this->email,
+        ]);
+
+        if (!$user) {
+            return false;
+        }
+        
+        if (!User::isPasswordResetTokenValid($user->password_reset_token)) {
+            $user->generatePasswordResetToken();
+            if (!$user->save(false)) {
+                return false;
+            }
+        }
+
+        return Yii::$app
+            ->mailer
+            ->compose(
+                ['html' => 'passwordResetToken-htmlUpdate', 'text' => 'passwordResetToken-textUpdate'],
+                ['user' => $user]
+            )
+            ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' Administrador'])
+            ->setTo($this->email)
+            ->setSubject('.::  ECM2 | Su usuario ha sido actualizado ::.' . Yii::$app->name)
             ->send();
     }
     
@@ -92,9 +125,41 @@ class PasswordResetRequestForm extends Model
                 ['html' => 'htmlFirmaDigital', 'text' => 'textoFirmaDigital'],
                 ['user' => $user]
             )
-            ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' robot'])
+            ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' Administrador'])
             ->setTo($this->email)
-            ->setSubject('.:: ECM2 | Activación de usuario ::.' . Yii::$app->name)
+            ->setSubject('.::  ECM2 | Su usuario ha sido activado ::.' . Yii::$app->name)
+            ->send();
+    }
+    
+    
+       public function enviaCorreoFirmaUpdate()
+    {
+        /* @var $user User */
+        $user = User::findOne([
+            'status' => User::STATUS_ACTIVE,
+            'email' => $this->email,
+        ]);
+
+        if (!$user) {
+            return false;
+        }
+        
+        if (!User::isPasswordResetTokenValid($user->password_reset_token)) {
+            $user->generatePasswordResetToken();
+            if (!$user->save(false)) {
+                return false;
+            }
+        }
+
+        return Yii::$app
+            ->mailer
+            ->compose(
+                ['html' => 'htmlFirmaDigitalUpdate', 'text' => 'textoFirmaDigitalUpdate'],
+                ['user' => $user]
+            )
+            ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' Administrador'])
+            ->setTo($this->email)
+            ->setSubject('.:: ECM2 | Su usuario ha sido actualizado ::.' . Yii::$app->name)
             ->send();
     }
 }

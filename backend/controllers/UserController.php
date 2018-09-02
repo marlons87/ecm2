@@ -110,10 +110,10 @@ class UserController extends Controller
             if($model->firma)
              {
                $model->setPassword($model->username);
-                $modelpass->enviaCorreoFirma(); 
+                $modelpass->enviaCorreoFirmaUpdate(); 
            }else{
                
-                 $modelpass->sendEmail(); 
+                 $modelpass->sendEmailUpdate(); 
            }
            $model->save();
            return $this->redirect(['index']);
