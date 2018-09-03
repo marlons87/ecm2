@@ -1,4 +1,5 @@
 <?php
+
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\Url;
@@ -10,72 +11,49 @@ $this->params['breadcrumbs'][] = ['label' => 'Evaluaciones', 'url' => ['index']]
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
- <h1><?= Html::encode($this->title) ?></h1>
- 
- <?php $form = ActiveForm::begin([
-      "method" => "post",    
-]) ?>
-  
-  
-<?= $form->field($model, 'Id_Institucion')->dropDownList($model->SedesList , ['prompt' => 'Seleccione...'])->label('Sedes')  ?>
- 
- <label for="descripcion" >Descripci&oacute;n  </label>
-  <textarea class="txtObservaciones" id="descripcion" maxlength="250"  name="txtObservaciones" style="width:100%"><?= (trim($descripcion)); ?></textarea>
- 
-    <div class="form-group">
-       <br>
-   <?= Html::submitButton('Crear evaluacion', ['class' => 'btn btn-success', 'value' => 'my_value','onClick' => 'js:sendData()']) ?>
-   <?= Html::a("Cancelar", Url::toRoute(['evaluaciones/index']), ['class' => 'btn btn-danger']) ?>
-       
-    </div>
-<?php ActiveForm::end() ?>
+<h1><?= Html::encode($this->title) ?></h1>
 
-  <script>
-      
-          function sendData() {
-              
-                if((($('#instituciones-id_institucion').val())==="") || ($.trim($('#descripcion').val()))===""){
-                    
-                    
-                    alert("Para crear una evaluación es necesario seleccionar la sede donde se desea aplicar la evaluación y agregar un pequeño comentario, o descripción de la evaluación.");
-                    
-                    
-                     event.preventDefault();
-                }else{
-                    
-                                                 $.ajax({
-                 
-                
-                 
-                 
-                 
-            type: "POST",
-            url: "<?php echo Yii::$app->getUrlManager()->createUrl('evaluaciones/insertar'); ?>",
-            data: {idSede: $('#instituciones-id_institucion').val(),descripcion:$('#descripcion').val()},
-            success: function () {
-                //alert("CORECTO");
-            },
-            //callBack,
-            error: function (exception) {
-                
-              
-                
-               // alert(exception);
-            }
-        });
+<?php $form = ActiveForm::begin(['id' => 'crear-form']); ?>
+
+	<?= $form->field($model, 'Id_Institucion')->dropDownList($model->SedesList, ['prompt' => 'Seleccione...'])->label('Sedes') ?>
+	
+	<label for="descripcion" >Descripci&oacute;n  </label>
+	<textarea class="txtObservaciones" id="descripcion" maxlength="250"  name="txtObservaciones" style="width:100%"><?= (trim($descripcion)); ?></textarea>
+
+	<?php ActiveForm::end() ?>
+
+<div class="form-group">
+    <br>
+    <?= Html::submitButton('Crear evaluacion', ['class' => 'btn btn-success', 'value' => 'my_value', 'onClick' => 'js:sendData()']) ?>
+    <?= Html::a("Cancelar", Url::toRoute(['evaluaciones/index']), ['class' => 'btn btn-danger']) ?>
+
+</div>
+
+<script>
+
+    function sendData() {
+
+        if ((($('#instituciones-id_institucion').val()) === "") || ($.trim($('#descripcion').val())) === "") {
+
+            alert("Para crear una evaluación es necesario seleccionar la sede donde se desea aplicar la evaluación y agregar un pequeño comentario, o descripción de la evaluación.");
+
+            event.preventDefault();
+        } else {
+
+            $.ajax({
+
+                type: "POST",
+                url: "<?php echo Yii::$app->getUrlManager()->createUrl('evaluaciones/insertar'); ?>",
+                data: {idSede: $('#instituciones-id_institucion').val(), descripcion: $('#descripcion').val()},
+                success: function () {
+                    document.getElementById("crear-form").submit();
+                },
+                //callBack,
+                error: function (exception) {
+
                 }
-            
-                                  
-  
-                  
-              
-              
-               
-             
+            });
+        }
+    }
 
-          }
-      
-  </script>
-
-
-
+</script>

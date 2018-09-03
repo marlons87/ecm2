@@ -7,7 +7,7 @@ use yii\web\AssetBundle;
 /**
  * Main frontend application asset bundle.
  */
-class AppAsset extends AssetBundle
+class AppAsset_1 extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
@@ -15,6 +15,13 @@ class AppAsset extends AssetBundle
         'css/site.css', 'css/modal.css',
     ];
     public $js = [
+        '/js/jquery.js',
+        '/js/popper.min.js',
+        '/js/bootstrap.min.js',
+        '/js/componente.js',
+        '/js/modal.js',
+        '/js/autenticacion.js',
+
     ];
     
     public $depends = [

@@ -35,7 +35,7 @@ return [
             ],
             'menus' => [
                 'assignment' => [
-                    'label' => 'Grand Access' // change label
+                    'label' => 'Administración de Accesos' // change label
                 ],
                 'route' => null, // disable menu route
             ]

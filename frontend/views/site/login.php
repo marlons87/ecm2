@@ -6,9 +6,9 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
-use frontend\assets\AppAsset;
+use frontend\assets\AppAsset_1;
 
-AppAsset::register($this);
+AppAsset_1::register($this);
 
 $this->title = 'Iniciar sesión';
 $this->params['breadcrumbs'][] = $this->title;
