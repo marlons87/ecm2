@@ -36,7 +36,7 @@ class User extends \common\models\User
     {
         return [
             ['username', 'match','pattern'=>'/^[0][1-9]?\d{4}?\d{4}$/'],
-            ['username', 'required','message' => 'Complete la identificación del usuario.'],
+            ['username', 'required','message' => 'Complete el número de identificación, por favor no incluya espacios ni guiones. Ejemplo: 0101110222'],
             //['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'El nombre de usuario o “Alias” ya está siendo utilizado en este momento..'],
             ['username', 'string', 'min' => 9, 'max' => 15],
             
