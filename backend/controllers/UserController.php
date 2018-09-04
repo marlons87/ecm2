@@ -77,8 +77,8 @@ class UserController extends Controller
                 $model->setPassword($model->username);
             }else{
                 $model->setPassword('123456');
-                $model->generateAuthKey();
             }
+                $model->generateAuthKey();
                 if ($model->save()) {
                     $auth = new DbManager;
                     $auth->init();
@@ -104,19 +104,23 @@ class UserController extends Controller
     {
        $modelpass = new PasswordResetRequestForm();
        $model = $this->findModel($id);
+       $firma = $model->firma;
        $model->scenario = "update";
        if ($model->load(Yii::$app->request->post())) {
             $modelpass->email = $model->email;
+            if($model->firma != $firma){
             if($model->firma)
-             {
+            {
                $model->setPassword($model->username);
                 $modelpass->enviaCorreoFirmaUpdate(); 
-           }else{
-               
+           }else{               
                  $modelpass->sendEmailUpdate(); 
+            }
            }
-           $model->save();
-           return $this->redirect(['index']);
+           if($model->save())
+           {
+            return $this->redirect(['index']);
+           }
        }
        return $this->render('update', [
            'model' => $model,

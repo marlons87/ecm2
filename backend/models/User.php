@@ -61,7 +61,7 @@ class User extends \common\models\User
             ['Id_Institucion', 'required','message' => 'Seleccione la institución a la que pertenece el usuario.'],
             [['Id_Institucion'], 'exist', 'skipOnError' => true, 'targetClass' => \common\models\Instituciones::className(), 'targetAttribute' => ['Id_Institucion' => 'Id_Institucion']],
                     
-            ['status', 'default', 'value' => self::STATUS_ACTIVE],
+            ['status', 'default', 'value' => self::STATUS_DELETED],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]], 
              ['firma', 'boolean'],
         ];
