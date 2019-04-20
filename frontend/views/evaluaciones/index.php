@@ -145,7 +145,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                                   echo GoogleChart::widget(array('visualization' => 'LineChart',
                                                       'data' => $graph_data,
                                                       'scriptAfterArrayToDataTable' => "data.setColumnProperty(2, 'role', 'tooltip'); data.setColumnProperty(2, 'html', 'true');",
-                                                      'options' => array('title' => 'Comportamiento  ' . $sede['sede'], 'tooltip' => array('isHtml' => 'true'), 'width' => 1100, 'height' => 400)));
+                                                      'options' => array('title' => 'Comportamiento  ' . $sede['sede'], 'tooltip' => array('isHtml' => 'true'), 'width' => 1100, 'height' => 400, 'vAxis'=> array ('minValue'=> 0, 'maxValue'=> 4))));
                                               } else {
                                                   ?> 
 
@@ -209,7 +209,7 @@ $this->params['breadcrumbs'][] = $this->title;
                    
                     echo GoogleChart::widget(array('visualization' => 'ColumnChart',
                     'data' => $graph_data,
-                    'options' => array('title' => 'Nivel de madurez por Sede','width' => 1100,'height' => 400)));
+                    'options' => array('title' => 'Nivel de madurez por Sede','width' => 1100,'height' => 400, 'vAxis'=> array ('minValue'=> 0, 'maxValue'=> 4))));
                 
                    
                }else{

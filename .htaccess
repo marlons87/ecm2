@@ -16,6 +16,10 @@
     RewriteRule ^.*$ backend/web/index.php	
 </IfModule>
 
+<IfModule mod_php5.c>
+	php_value max_execution_time 300
+</IfModule>
+
 <IfModule mod_headers.c>
 Header unset Server
 Header always unset X-Powered-By

@@ -78,9 +78,9 @@ class LoginForm extends Model {
         if ($user->firma <> $this->fd) {
             Yii::$app->user->logout();
             if($user->firma){
-            Yii::$app->getSession()->setFlash('error', 'El usuario debe autenticarse por medio de su firma digital');
+                Yii::$app->getSession()->setFlash('error', 'El usuario debe autenticarse por medio de su firma digital');
             } else {
-                            Yii::$app->getSession()->setFlash('error', 'El usuario debe autenticarse por medio de su nombre de usuario y contraseña.');
+                Yii::$app->getSession()->setFlash('error', 'El usuario no está habilitado para autenticarse por medio de la firma digital, debe digitar su nombre de usuario y contraseña.');
             }
             return false;
         }

@@ -94,7 +94,7 @@ foreach ($items as $i):?>
                 echo GoogleChart::widget(array('visualization' => 'ColumnChart',
                     'data' => $graph_data,
                     'scriptAfterArrayToDataTable' => "data.setColumnProperty(2, 'role', 'tooltip'); data.setColumnProperty(2, 'html', 'true');" ,
-                    'options' => array( 'legend'=> 'none','tooltip' => array('isHtml'=>'true'), 'title' => 'Resultado de la evaluación de los controles del dominio: ' . $i['Nombre'], 'height' => 450)));
+                    'options' => array( 'legend'=> 'none','tooltip' => array('isHtml'=>'true'), 'title' => 'Resultado de la evaluación de los controles del dominio: ' . $i['Nombre'], 'height' => 450, 'vAxis'=> array ('minValue'=> 0, 'maxValue'=> 4))));
             }
 
             if ($nivelDominio != 6) {

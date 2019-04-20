@@ -148,7 +148,7 @@ $Id_Institucion = $Id_Institucion;
                                             echo GoogleChart::widget(array('visualization' => 'LineChart',
                                                 'data' => $graph_data,
                                                 'scriptAfterArrayToDataTable' => "data.setColumnProperty(2, 'role', 'tooltip'); data.setColumnProperty(2, 'html', 'true');",
-                                                'options' => array('title' => 'Comportamiento  ' . $sede['sede'], 'tooltip' => array('isHtml' => 'true'), 'width' => 1100, 'height' => 400)));
+                                                'options' => array('title' => 'Comportamiento  ' . $sede['sede'], 'tooltip' => array('isHtml' => 'true'), 'width' => 1100, 'height' => 400, 'vAxis'=> array ('minValue'=> 0, 'maxValue'=> 4))));
                                         } else {
                                             ?> 
 
@@ -202,7 +202,9 @@ $Id_Institucion = $Id_Institucion;
 
                 echo GoogleChart::widget(array('visualization' => 'ColumnChart',
                     'data' => $graph_data,
-                    'options' => array('title' => 'Nivel de madurez por Sede', 'width' => 1100, 'height' => 400)));
+                    'options' => array('title' => 'Nivel de madurez por Sede', 'width' => 1100, 'height' => 400, 'vAxis'=> array ('minValue'=> 0, 'maxValue'=> 4)),
+                    
+                      ));
             } else {
                 ?> 
 
@@ -286,7 +288,7 @@ $Id_Institucion = $Id_Institucion;
             } else {
                 echo GoogleChart::widget(array('visualization' => 'LineChart',
                     'data' => $graficoSede,
-                    'options' => array('title' => 'Nivel de madurez por Sede', 'hAxis' => array('slantedText' => 'true', 'slantedTextAngle' => 25, 'textStyle' => array('fontSize' => '9')), 'tooltip' => array('isHtml' => 'true'), 'width' => 1200, 'height' => 600)));
+                    'options' => array('title' => 'Nivel de madurez por Sede', 'hAxis' => array('slantedText' => 'true', 'slantedTextAngle' => 25, 'textStyle' => array('fontSize' => '9')), 'tooltip' => array('isHtml' => 'true'), 'width' => 1200, 'height' => 600, 'vAxis'=> array ('minValue'=> 0, 'maxValue'=> 4))));
             }
 
 

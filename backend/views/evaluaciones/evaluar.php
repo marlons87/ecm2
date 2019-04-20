@@ -8,7 +8,12 @@ use yii\helpers\ArrayHelper;
 $idEvaluacion = $idevaluacion;
 
 
-
+function cmp($a, $b) {
+    if($a['Valor'] == $b['Valor']) {
+        return 0;
+    }
+    return ($a['Valor'] > $b['Valor']) ? -1 : 1;
+}
 
 $this->title = 'Controles a evaluar';
 $comentario='';
@@ -27,6 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
 $form = ActiveForm::begin([
             "method" => "post",
         ]);
+
 ?>
 
 
@@ -42,8 +48,9 @@ $form = ActiveForm::begin([
 
             <?php
             $valn = $valc['niveles'];
+			usort($valn, 'cmp');
             $val = '';
-            foreach ($valc['niveles'] as $varNiveles):
+            foreach ($valn as $varNiveles):
 
                 foreach ($respuestas as $respuesta):
 

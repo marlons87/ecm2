@@ -7,7 +7,7 @@ var CERTIFICATE = "308204743082035ca00302010202143230303031303030303030313030303
 var TYPE_AUTH = "AUTHENTICATION";
 var TYPE_SIGN = "SIGN";
 var TYPE_KEY_GENERATOR = "KEY_GENERATOR";
-var VALIDATION_TYPE = "nothing"; //ocsp, crl, nothing
+var VALIDATION_TYPE = "ocsp"; //ocsp, crl, nothing
 var jq= $.noConflict();
 
 jq.support.cors = true;
